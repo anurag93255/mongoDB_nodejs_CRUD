@@ -45,8 +45,9 @@ var upload = multer({
 }).single('upload_csv');
 
 
-
-const mgDB = "mongodb+srv://anns:1234AnnS@myproject1.rt3op.mongodb.net/test-nodejs-mongodb?retryWrites=true&w=majority";
+const ID = '';
+const PASS = '';
+const mgDB = `mongodb+srv://{ID}:{PASS}@myproject1.rt3op.mongodb.net/test-nodejs-mongodb?retryWrites=true&w=majority`;
 mongoose.connect(mgDB , {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => {
         console.log('MongoDB collection done successfully');
