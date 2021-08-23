@@ -1,0 +1,57 @@
+<%- include('base_header.ejs') %>
+<div class="container">
+    
+
+    
+    <div class="form-group row">
+        <div class="form-data col-md-6">
+
+            <a class="btn btn-primary btn-sm mb-3" href="/">Dashboard</a>
+
+            <div class="card">
+                <h2 class="card-header"><%= form_attr.title %></h2>
+                <div class="card-body">
+                
+                    <form action="/form-submit" method="post">
+                        <div class="m-2">
+                            <!-- User Name -->
+                            <label for="name">Username</label>
+                            <input type="text" class="form-control" name="name" value="<%- form_data.name ? form_data.name : '' %>" placeholder="Username">
+                        </div>
+                        <div class="m-2">
+                            <!-- User Surname -->
+                            <label for="surname">Surname</label>
+                            <input type="text" class="form-control" name="surname" value="<%- form_data.surname ? form_data.surname : '' %>" placeholder="Surname">
+                        </div>
+                        <div class="m-2">
+                            <!-- User Address -->
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" name="address" value="<%- form_data.address ? form_data.address : '' %>" placeholder="Address">
+                        </div>  
+                        <div class="m-2">
+                            <!-- User Subaddress -->
+                            <label for="subaddress">Subaddress</label>
+                            <input type="text" class="form-control" name="subaddress" value="<%- form_data.subaddress ? form_data.subaddress : '' %>" placeholder="Subaddress">
+                        </div>  
+                        <div class="m-2">
+                            <!-- User State -->
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" name="state" value="<%- form_data.state ? form_data.state : '' %>" placeholder="State">
+                        </div>  
+                        <div class="m-2">
+                            <!-- User Pincode -->
+                            <label for="pincode">Pincode</label>
+                            <input type="text" class="form-control" name="pincode" value="<%- form_data.pincode ? form_data.pincode : '' %>" placeholder="Pincode">
+                        </div>  
+                        <input type="hidden" name="_id" value="<%= form_data._id %>">
+                        <button type="submit" class="btn btn-sm btn-primary m-2"> Submit </button>
+                    </form>
+                 
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </div>
+</div>

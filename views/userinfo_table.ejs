@@ -1,0 +1,71 @@
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+<%- include('base_header.ejs') %>
+<div class="container">
+    <div class="row m-5">
+        <div class="col-md-6 ">
+            <div class="col-md-4 ">
+                <a class="btn btn-sm btn-primary" href="/useerinfo_form">Add User</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 ">
+                <a class="btn btn-sm btn-success" href="/upload">Bulk Upload</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-10">
+        <table id="example" class="display" width="100%"></table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "ajax": {
+                "url": "/get_user_detail",
+                "dataSrc": "userDetail",
+                "dataType": "json",
+            },
+            columns: [
+                { "data": "name", "defaultContent": "NA", title:'Name' },
+                { "data": "surname", "defaultContent": "NA", title:'Surname' },
+                { "data": "address", "defaultContent": "NA", title:'Address' },
+                { "data": "subaddress", "defaultContent": "NA", title:'Subaddress' },
+                { "data": "state", "defaultContent": "NA", title:'State' },
+                { "data": "pincode", "defaultContent": "NA", title: 'Pincode' },
+                { "data": "_id", 
+                    render: function ( data, type, row ) {
+                        return `<a href="/useerinfo_form/${data}" class="btn btn-sm btn-outline-danger">Edit</a>
+                                <button onclick="delete_user('${data}')" class="btn btn-sm btn-outline-success">Delete</button>
+                                `;
+                    }  ,
+                    'title':'Action'
+                },
+                
+            ]
+        } );
+    } );
+
+    function delete_user(id) {
+        $.ajax({
+            url: '/delete_user',
+            type: 'DELETE',
+            data: {id: id},
+            success: function(res) {
+                alert(res);
+            },
+            error: function(err) {
+                alert(res);
+            }
+        }).done((res) => {
+
+        });
+    }
+</script>

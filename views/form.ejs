@@ -1,0 +1,19 @@
+<%- include('base_header.ejs') %>
+<div class="container">
+    <h1><%= form_attr.title %></h1>
+    <hr>
+    <dov class="row">
+        <div class="col-md-6">
+            <a class="btn btn-primary btn-sm mb-3" href="/">Dashboard</a>
+            <form action="/upload_csv" method="post" enctype="multipart/form-data">
+                <div class="form-group mb-3">
+                    <label for="upload_csv">Select CSV file to upload</label>
+                    <input type="file" class="form-control" name="upload_csv" > 
+                </div>
+                <button type="submit" class="btn btn-sm btn-success">Upload</button>
+            </form>
+        </div>
+    </dov>
+</div>
+
+
